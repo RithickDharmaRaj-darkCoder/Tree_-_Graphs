@@ -5,10 +5,23 @@
 # Binary Search Tree ...
 
 class bst:
-    def __init__(self, key=None):
+    def __init__(self,Object_name,key=None):
+        self.Object_name = Object_name
         self.key = key
         self.lchild = None
         self.rchild = None
+
+    def pre_order_traversal(self):
+        print(f'{self.Object_name}[Pre-order] : ',end=" ")
+        if not self.key:
+            print('Binary Search tree is Empty!')
+        elif self.key:
+            print(f'{self.key}, ',end=" ")
+            if self.lchild:
+                self.lchild.pre_order_traversal()
+            elif self.rchild:
+                self.rchild.pre_order_traversal()
+
 
     def add_node(self, data):
         if not self.key:
@@ -26,3 +39,8 @@ class bst:
                 self.rchild.add_node(data)
             else:
                 self.rchild = bst(data)
+
+
+bst1 = bst('BST1',10)
+
+bst1.pre_order_traversal()
