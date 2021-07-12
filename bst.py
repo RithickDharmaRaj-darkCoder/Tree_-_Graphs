@@ -83,3 +83,4 @@ class bst:
                 self.rchild.insert(data)
             else:
                 self.rchild = bst(key=data)
+
