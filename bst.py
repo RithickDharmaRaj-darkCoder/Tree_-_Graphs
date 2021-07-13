@@ -86,30 +86,32 @@ class bst:
 
     def delete(self, x):
         if not self.key:
-            print('Binary Search tree is already Empty!')
+            print('Binary Search Tree is Empty!')
             return
-        if x < self.key:
+        if self.key == x:
+            if not self.lchild and not self.rchild:
+                self.key = 'None'
+            elif not self.lchild and self.rchild:
+                self.key = self.rchild.key
+                self.lchild = self.rchild.lchild
+                self.rchild = self.rchild.rchild
+            elif self.lchild and not self.rchild:
+                self.key = self.lchild.key
+                self.rchild = self.lchild.rchild
+                self.lchild = self.lchild.lchild
+            elif self.lchild and self.rchild:
+                node = self.rchild
+                while node.lchild:
+                    node = node.lchild
+                self.key = node.key
+                node.key = 'None'
+        elif x < self.key:
             if self.lchild:
-                self.lchild = self.lchild.delete(x)
+                self.lchild.delete(x)
             else:
-                print(f'{x} is not in BST!')
+                print(f'{x} is not in the Tree!')
         elif x > self.key:
             if self.rchild:
-                self.rchild = self.rchild.delete(x)
+                self.rchild.delete(x)
             else:
-                print(f'{x} is not in BST!')
-        else:
-            if not self.lchild:
-                temp = self.rchild
-                self = None
-                return temp
-            if not self.rchild:
-                temp = self.rchild
-                self = None
-                return temp
-            node = self.rchild
-            while node.lchild:
-                node = node.lchild
-            self.key = node.key
-            self.rchild = self.rchild.delete(node.key)
-        return self
+                print(f'{x} is not in the Tree!')
