@@ -23,7 +23,8 @@ class bst:
         if not self.key:
             print('Binary Search tree is Empty!')
         elif self.key:
-            print(f'{self.key}',end=",")
+            if self.key != 'None':
+                print(f'{self.key}', end=',')
             if self.lchild:
                 self.lchild.pre_order_traversal()
             if self.rchild:
@@ -35,7 +36,8 @@ class bst:
         else:
             if self.lchild:
                 self.lchild.in_order_traversal()
-            print(f'{self.key}',end=',')
+            if self.key != 'None':
+                print(f'{self.key}', end=',')
             if self.rchild:
                 self.rchild.in_order_traversal()
 
@@ -47,7 +49,8 @@ class bst:
                 self.lchild.post_order_traversal()
             if self.rchild:
                 self.rchild.post_order_traversal()
-            print(f'{self.key}',end=',')
+            if self.key != 'None':
+                print(f'{self.key}', end=',')
 
     def find(self,x):
         print()
