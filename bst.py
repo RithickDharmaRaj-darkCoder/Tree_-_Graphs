@@ -76,6 +76,15 @@ class bst:
             else:
                 self.lchild.min()
 
+    def max(self):
+        if not self.key:
+            print('Binary Search tree is Empty!')
+        else:
+            if not self.rchild:
+                print(f'Minimum : {self.key}')
+            else:
+                self.rchild.max()
+
     def insert(self, data):
         if not self.key:
             self.key = data
