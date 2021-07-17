@@ -11,7 +11,7 @@ class alrg:
         for i in self.graph:
             print(f'{i} = {self.graph.get(i)}')
 
-    '''def add_node(self,v):
+    def add_node(self,v):
         if v in self.graph:
             print(f'{v} is already in graph!')
         else:
@@ -28,7 +28,7 @@ class alrg:
             if v1 not in self.graph[v2]:
                 self.graph[v2].append(v1)
 
-    def delete_node(self,v):
+    '''def delete_node(self,v):
         if v not in self.graph:
             print(f'{v} is not in graph!')
         else:
