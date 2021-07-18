@@ -2,14 +2,28 @@
 # User-Defined ...
 # Non-Linear ...
 # Graphs ...
-# Adjustancy Matrix Graph (Bi-Directional Graph) ...
+# Adjustancy List Representing Graph (Bi-Directional-Weighted Graph) ...
 
 class alrg:
     graph = {}
+    visited = []
 
-    def traversal(self):
+    def traversal(self,starting_node):
+        print('List Representation ...')
         for i in self.graph:
-            print(f'{i} = {self.graph.get(i)}')
+            print(f'    {i} = {self.graph.get(i)}')
+        print('Depth First Search Representation ...\n\tDFS :',end=" ")
+        self.dfs(starting_node)
+
+    def dfs(self,starting_node):
+        if starting_node not in self.graph:
+            print(f'{starting_node} is not in Graph!')
+        else:
+            if starting_node not in self.visited:
+                print(starting_node,end=" ")
+                self.visited.append(starting_node)
+                for inn in range(len(self.graph[starting_node])):
+                    self.dfs(self.graph[starting_node][inn][0])
 
     def add_node(self,v):
         if v in self.graph:
@@ -39,7 +53,6 @@ class alrg:
                 for outer in range(len(self.graph[keys])):
                     if self.graph[keys][outer][0] == v:
                         self.graph[keys].pop(outer)
-
 
     def delete_edge(self,v1,v2):
         if v1 not in self.graph:
